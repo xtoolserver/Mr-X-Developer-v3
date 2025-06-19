@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mr X Hacker Pro V3</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #000000, #010e1a);
+      font-family: 'Courier New', monospace;
+      color: #00ffff;
+      overflow-x: hidden;
+    }
+    .container, .screen {
+      display: none;
+      padding: 20px;
+      text-align: center;
+    }
+    .active {
+      display: block;
+    }
+    h1, h2 {
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff;
+    }
+    input, button, select {
+      padding: 10px;
+      margin: 10px;
+      background: #000;
+      color: #00ffff;
+      border: 2px solid #00ffff;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+    .btn {
+      display: inline-block;
+      margin: 5px;
+      box-shadow: 0 0 10px #00ffff;
+    }
+    #terminal {
+      background: black;
+      border: 1px solid #00ffff;
+      padding: 10px;
+      margin: 10px auto;
+      height: 200px;
+      width: 90%;
+      overflow-y: auto;
+      text-align: left;
+      font-size: 13px;
+      color: #39ff14;
+    }
+    .back-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: red;
+      color: white;
+    }
+    .magic-text {
+      font-family: 'Creepster', cursive;
+      color: #ff0055;
+      font-size: 22px;
+      text-shadow: 0 0 5px red, 0 0 10px purple;
+    }
+    .number-list {
+      text-align: left;
+      max-height: 300px;
+      overflow-y: scroll;
+      padding: 10px;
+      border: 1px solid #00ffff;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body><!-- Home Screen --><div id="home" class="container active">
+  <h1 class="magic-text">☠ Welcome Mr X Developer ☠</h1>
+  <p>Enter WhatsApp Number:</p>
+  <input type="text" id="victimNumber" placeholder="+2557xxxxxxx">
+  <br>
+  <button class="btn" onclick="goTo('inject')">💉 Inject Virus</button>
+  <button class="btn" onclick="goTo('crash')">☠ Crash App</button>
+  <button class="btn" onclick="goTo('trace')">📡 Trace Location</button>
+  <button class="btn" onclick="goTo('steal')">📲 Steal WhatsApp</button>
+  <button class="btn" onclick="goTo('numbers')">📞 Fake Numbers</button>
+</div><!-- Inject Screen --><div id="inject" class="screen">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+  <h2>Injecting Virus...</h2>
+  <div id="injectOutput"></div>
+</div><!-- Crash Screen --><div id="crash" class="screen">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+  <h2>Crashing WhatsApp...</h2>
+  <div id="crashOutput"></div>
+</div><!-- Trace Screen --><div id="trace" class="screen">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+  <h2>Tracing Victim Location...</h2>
+  <div id="traceOutput"></div>
+</div><!-- Steal Screen --><div id="steal" class="screen">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+  <h2>Stealing WhatsApp Credentials...</h2>
+  <div id="stealOutput"></div>
+</div><!-- Fake Numbers Screen --><div id="numbers" class="screen">
+  <button class="back-btn" onclick="goBack()">⬅ Back</button>
+  <h2>Fake WhatsApp Numbers</h2>
+  <label>Choose Country:</label>
+  <select id="countrySelect" onchange="generateFakeNumbers()">
+    <option value="tz">Tanzania</option>
+    <option value="in">India</option>
+    <option value="ke">Kenya</option>
+    <option value="us">USA</option>
+    <option value="ng">Nigeria</option>
+  </select>
+  <div class="number-list" id="fakeNumbers"></div>
+</div><script>
+  function goTo(screen) {
+    const victim = document.getElementById('victimNumber').value.trim();
+    if (!victim && screen !== 'numbers') return alert("Please enter victim's WhatsApp number!");
+    document.querySelectorAll('.container, .screen').forEach(el => el.classList.remove('active'));
+    document.getElementById(screen).classList.add('active');
+    if (screen === 'inject') showInject(victim);
+    else if (screen === 'crash') showCrash(victim);
+    else if (screen === 'trace') showTrace(victim);
+    else if (screen === 'steal') showSteal(victim);
+    else if (screen === 'numbers') generateFakeNumbers();
+  }
+
+  function goBack() {
+    document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
+    document.getElementById('home').classList.add('active');
+  }
+
+  function showInject(victim) {
+    const el = document.getElementById('injectOutput');
+    el.innerHTML = `Target: ${victim}<br>Injecting payload...<br>Bypassing security...<br>Virus injected successfully ✅`;
+  }
+
+  function showCrash(victim) {
+    const el = document.getElementById('crashOutput');
+    el.innerHTML = `Target: ${victim}<br>Triggering overload...<br>Forcing memory leak...<br>WhatsApp crashed ☠`;
+  }
+
+  function showTrace(victim) {
+    const ip = `196.249.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}`;
+    const gps = `-6.${Math.floor(Math.random()*9000)}, 39.${Math.floor(Math.random()*9000)}`;
+    const cities = ['Dar es Salaam', 'Arusha', 'Dodoma', 'Mwanza'];
+    const city = cities[Math.floor(Math.random() * cities.length)];
+    const el = document.getElementById('traceOutput');
+    el.innerHTML = `Tracing ${victim}...<br>IP: ${ip}<br>ISP: Vodacom Ltd<br>Location: ${city}<br>GPS: ${gps}`;
+  }
+
+  function showSteal(victim) {
+    const fakeNum = `+25570${Math.floor(100000 + Math.random() * 899999)}`;
+    const code = Math.floor(100000 + Math.random() * 899999);
+    const el = document.getElementById('stealOutput');
+    el.innerHTML = `Hacking into ${victim}'s WhatsApp...<br>Fake Cloned Number: ${fakeNum}<br>Verification Code: ${code}<br>Status: Linked ✅<br>Access token injected 🧬`;
+  }
+
+  function generateFakeNumbers() {
+    const country = document.getElementById('countrySelect').value;
+    const output = document.getElementById('fakeNumbers');
+    let code = '+255';
+    if (country === 'in') code = '+91';
+    if (country === 'ke') code = '+254';
+    if (country === 'us') code = '+1';
+    if (country === 'ng') code = '+234';
+
+    let numbers = '';
+    for (let i = 0; i < 500; i++) {
+      const randomNum = Math.floor(1000000 + Math.random() * 8999999);
+      const loginCode = Math.floor(100000 + Math.random() * 899999);
+      numbers += `<div>${code}${randomNum} - Code: ${loginCode}</div>`;
+    }
+    output.innerHTML = numbers;
+  }
+</script></body>
+  </html>
