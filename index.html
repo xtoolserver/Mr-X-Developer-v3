@@ -1,11 +1,12 @@
 <!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mr X Hacker Pro V3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr X Hacker Pro V3 (Mobile)</title>
   <style>
     body {
       margin: 0;
-      background: linear-gradient(to bottom, #000000, #010e1a);
+      background: radial-gradient(#000014, #000);
       font-family: 'Courier New', monospace;
       color: #00ffff;
       overflow-x: hidden;
@@ -23,17 +24,21 @@
       text-shadow: 0 0 10px #00ffff;
     }
     input, button, select {
-      padding: 10px;
-      margin: 10px;
+      padding: 12px;
+      margin: 10px auto;
       background: #000;
       color: #00ffff;
       border: 2px solid #00ffff;
-      font-size: 16px;
-      border-radius: 5px;
+      font-size: 18px;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 350px;
+      display: block;
     }
     .btn {
-      display: inline-block;
-      margin: 5px;
+      margin: 10px auto;
+      width: 90%;
+      max-width: 350px;
       box-shadow: 0 0 10px #00ffff;
     }
     #terminal {
@@ -45,7 +50,7 @@
       width: 90%;
       overflow-y: auto;
       text-align: left;
-      font-size: 13px;
+      font-size: 14px;
       color: #39ff14;
     }
     .back-btn {
@@ -54,11 +59,12 @@
       right: 10px;
       background: red;
       color: white;
+      border-radius: 5px;
     }
     .magic-text {
       font-family: 'Creepster', cursive;
       color: #ff0055;
-      font-size: 22px;
+      font-size: 26px;
       text-shadow: 0 0 5px red, 0 0 10px purple;
     }
     .number-list {
@@ -67,15 +73,17 @@
       overflow-y: scroll;
       padding: 10px;
       border: 1px solid #00ffff;
-      margin: 10px;
+      margin: 10px auto;
+      width: 95%;
+      max-width: 360px;
+      font-size: 14px;
     }
   </style>
 </head>
 <body><!-- Home Screen --><div id="home" class="container active">
-  <h1 class="magic-text">☠ Welcome Mr X Developer ☠</h1>
+  <h1 class="magic-text">✘ Welcome Mr X Developer ✘</h1>
   <p>Enter WhatsApp Number:</p>
   <input type="text" id="victimNumber" placeholder="+2557xxxxxxx">
-  <br>
   <button class="btn" onclick="goTo('inject')">💉 Inject Virus</button>
   <button class="btn" onclick="goTo('crash')">☠ Crash App</button>
   <button class="btn" onclick="goTo('trace')">📡 Trace Location</button>
